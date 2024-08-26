@@ -75,6 +75,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const unfundedGamesParagraph = document.createElement('p');
     unfundedGamesParagraph.innerHTML = unfundedGamesString;
     descriptionContainer.appendChild(unfundedGamesParagraph);
+
+    // Calculate the top two most funded games
+    const sortedGames = GAMES_JSON.sort((a, b) => b.pledged - a.pledged);
+    const [topGame, secondGame, ...rest] = sortedGames;
+
+    // Grab the containers for displaying the top games
+    const firstGameContainer = document.getElementById("first-game");
+    const secondGameContainer = document.getElementById("second-game");
+
+    // Create elements to display the top game names
+    const topGameElement = document.createElement('h4');
+    topGameElement.textContent = topGame.name;
+    firstGameContainer.appendChild(topGameElement);
+
+    const secondGameElement = document.createElement('h4');
+    secondGameElement.textContent = secondGame.name;
+    secondGameContainer.appendChild(secondGameElement);
 });
 
 // Functions for filtering and other operations
@@ -112,6 +129,15 @@ fundedBtn.addEventListener('click', filterFundedOnly);
 
 const allBtn = document.getElementById("all-btn");
 allBtn.addEventListener('click', showAllGames);
+
+// Implement the search function (optional bonus feature)
+function searchGames() {
+    const query = document.getElementById("search-bar").value.toLowerCase();
+    const filteredGames = GAMES_JSON.filter(game => game.name.toLowerCase().includes(query));
+
+    deleteChildElements(gamesContainer);
+    addGamesToPage(filteredGames);
+}
 
 
 // /*****************************************************************************

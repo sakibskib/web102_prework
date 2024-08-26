@@ -44,7 +44,7 @@ Making the image show up, and I could not get the individual contributions and t
 
 ## License
 
-    Copyright [yyyy] [name of copyright owner]
+    Copyright [2024] [Sheikh Shihabun Sakib]
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
